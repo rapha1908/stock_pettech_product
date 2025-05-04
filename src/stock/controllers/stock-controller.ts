@@ -16,8 +16,8 @@ export class StockController{
     return this.stockService.getAllStock(limit, page);
   }
   @Get(':productId')
-  async getStock(@Param('productId')productId: number){
-    return this.stockService.getStock('productId');
+  async getStock(@Param('productId') productId: string) {
+    return this.stockService.getStock(productId);
   }
   @Post()
   async createStock(@Body() product: IProduct) {
