@@ -3,6 +3,7 @@ import { MongooseModule } from '@nestjs/mongoose';
 import { ProductSchema } from './schemas/product.schema';
 import { ProductRepository } from './repository/product.repository';
 import { ProductMongooseRepository } from './repository/mongoose/product.mongoose.repository';
+import { StockService } from './services/stock.service';
 
 @Module({
   imports: [
@@ -18,6 +19,7 @@ import { ProductMongooseRepository } from './repository/mongoose/product.mongoos
       provide: ProductRepository,
       useClass: ProductMongooseRepository,
     },
+    StockService,
   ],
 })
 export class StockModule {}
