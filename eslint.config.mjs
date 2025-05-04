@@ -2,6 +2,7 @@
 import eslint from '@eslint/js';
 import eslintPluginPrettierRecommended from 'eslint-plugin-prettier/recommended';
 import globals from 'globals';
+import { off } from 'process';
 import tseslint from 'typescript-eslint';
 
 export default tseslint.config({
@@ -29,6 +30,17 @@ export default tseslint.config({
                     "singleQuote": true,
                     "semi": true,
                     "trailingComma": 'all',
+                }
+            ],
+            '@typescript-eslint/naming-convention': [
+                'error',
+                {
+                    'selector': 'interface',
+                    'format': ['PascalCase'],
+                    'custom': {
+                        'regex': '^I[A-Z]',
+                        'match': true,
+                    },
                 }
             ],
             '@typescript-eslint/no-explicit-any': 'off',
