@@ -15,7 +15,12 @@ export class ProductMongooseRepository implements ProductRepository {
   }
 
   getStock(productId: string): Promise<IProduct> {
-    return this.productModel.findById(productId).exec();
+    return this.productModel.findById(productId).exec().then(product => {
+      if (!product) {
+        throw new Error('Product not found');
+      }
+      return product;
+    });
   }
 
   async createStock(product: IProduct): Promise<void> {
