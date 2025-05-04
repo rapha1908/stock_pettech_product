@@ -4,6 +4,7 @@ import { ProductSchema } from './schemas/product.schema';
 import { ProductRepository } from './repository/product.repository';
 import { ProductMongooseRepository } from './repository/mongoose/product.mongoose.repository';
 import { StockService } from './services/stock.service';
+import { StockController } from './controllers/stock-controller';
 
 @Module({
   imports: [
@@ -20,6 +21,9 @@ import { StockService } from './services/stock.service';
       useClass: ProductMongooseRepository,
     },
     StockService,
+  ],
+  controllers: [
+     StockController,
   ],
 })
 export class StockModule {}
